@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.TimesReader" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -18,21 +18,16 @@
         <!--<item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item> -->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:fitsSystemWindows">true</item>
-        <item name="android:statusBarColor" tools:targetApi="l">#00000000</item>
+        <item name="android:statusBarColor">#00000000</item>
         <item name="radioButtonStyle">@style/RadioButton</item>
         <!-- Customize your theme here. -->
 
-        <item name="actionBarTheme" parent="@style/CustomAppBar"/>
         <item name="android:textColorSecondary">@color/very_light_grey</item>
     </style>
 
     <style name="RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:paddingHorizontal">12dp</item>
         <item name="android:paddingVertical">6dp</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
-    <style name="CustomAppBar" parent="TextAppearance.Material3.ActionBar.Title">
         <item name="android:textAlignment">center</item>
     </style>
 

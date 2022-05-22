@@ -5,6 +5,9 @@ import com.squareup.picasso.Picasso
 
 class ImageFetcher {
 
+    /**
+     * Fetch image for article and resize if the element is not highlighted.
+     */
     fun fetchCoverImage(isHighlighted: Boolean, url: String, view: ImageView) {
         if (isHighlighted) {
             Picasso.get().load(url).fit().centerCrop().into(view)

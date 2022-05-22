@@ -1,5 +1,6 @@
 package com.visa.timesreader.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,9 +21,6 @@ class NewsAdapter(private val data: List<Result>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
-        /**
-         * Fetch image for article and resize if the element is not highlighted.
-         */
 
         /**
          * Bind data to views. Variables that need no parsing are automatically populated
@@ -33,17 +31,12 @@ class NewsAdapter(private val data: List<Result>) :
             val dateParser = DateTimeParser()
             if (binding is NewsItemBinding) {
                 binding.item = item
-
                 val context = binding.root.context
                 binding.container.setOnClickListener {
-                    val intent = Intent(context, NewsDetailActivity::class.java)
-                    intent.putExtra("url", item.url)
-                    context.startActivity(intent)
+                    generateOnClickListener(context, item)
                 }
-
                 binding.parsedDate =
                     dateParser.timeBetween(item.published_date, binding)
-
                 try {
                     imageFetcher.fetchCoverImage(false, item.multimedia[0].url, binding.multimedia)
                 } catch (e: Exception) {
@@ -53,9 +46,7 @@ class NewsAdapter(private val data: List<Result>) :
                 binding.item = item
                 val context = binding.root.context
                 binding.container.setOnClickListener {
-                    val intent = Intent(context, NewsDetailActivity::class.java)
-                    intent.putExtra("url", item.url)
-                    context.startActivity(intent)
+                    generateOnClickListener(context, item)
                 }
                 binding.parsedCategory = item.section.replaceFirstChar { it.uppercase() }
                 binding.parsedDate =
@@ -67,6 +58,15 @@ class NewsAdapter(private val data: List<Result>) :
                 }
             }
             binding.executePendingBindings()
+        }
+
+        private fun generateOnClickListener(
+            context: Context,
+            item: Result
+        ) {
+            val intent = Intent(context, NewsDetailActivity::class.java)
+            intent.putExtra("url", item.url)
+            context.startActivity(intent)
         }
     }
 
@@ -85,7 +85,7 @@ class NewsAdapter(private val data: List<Result>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val news: Result = data[position]
+        val news = data[position]
         holder.bind(news)
     }
 

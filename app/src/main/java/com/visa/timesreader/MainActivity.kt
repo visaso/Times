@@ -90,7 +90,6 @@ class MainActivity : AppCompatActivity() {
          * Layout Parameters for each CategoryButton
          * Needed to set margins dynamically
          */
-        val defaultCategory = Category.Home
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
@@ -108,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 id = View.generateViewId()
             }
 
-            if (category == defaultCategory) {
+            if (category == viewModel.selectedCategory) {
                 buttonContainer.isChecked = true
             }
             group.addView(buttonContainer)
