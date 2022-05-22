@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NY Times</string>
+    <string name="timesreader">TimesReader</string>
+    <string name="category_date">%1$s</string>
+    <string name="days_ago">%1$sd ago</string>
+    <string name="hours_ago">%1$sh ago</string>
+    <string name="minutes_ago">%1$smin ago</string>
+    <string name="ny_times">NY Times</string>
+</resources>
